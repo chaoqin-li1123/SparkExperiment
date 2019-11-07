@@ -23,11 +23,11 @@ public class Monitor {
 		fr = new FileWriter(file);
 		for (int i = 0; i < 10; i++) {
 			fr.write(Long.toString(System.currentTimeMillis()) + "\n");
-	        fr.write("Used Memory   :  " + (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) + " bytes\n");
-	        fr.write("Free Memory   : " + Runtime.getRuntime().freeMemory() + " bytes\n");
-	        fr.write("Total Memory  : " + Runtime.getRuntime().totalMemory() + " bytes\n");
-	        fr.write("Max Memory    : " + Runtime.getRuntime().maxMemory() + " bytes\n\n");     
-	        Thread.sleep(4000);
+	        	fr.write("Used Memory   :  " + (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) + " bytes\n");
+	        	fr.write("Free Memory   : " + Runtime.getRuntime().freeMemory() + " bytes\n");
+	        	fr.write("Total Memory  : " + Runtime.getRuntime().totalMemory() + " bytes\n");
+	        	fr.write("Max Memory    : " + Runtime.getRuntime().maxMemory() + " bytes\n\n");     
+	        	Thread.sleep(4000);
 		}
 		fr.close();
    
