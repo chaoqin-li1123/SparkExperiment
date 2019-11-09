@@ -19,9 +19,10 @@ cp metrics.properties.template metrics.properties
 
 #Polling directory for CsvSink
 *.sink.csv.directory=/home/cc/spark-2.1.3-bin-hadoop2.7/logs
-
 #Polling period for the CsvSink specific for the worker instance
 worker.sink.csv.period=10
 #Unit of the polling period for the CsvSink specific for the worker instance
 worker.sink.csv.unit=seconds
 
+HiBench/conf/hibench.conf datasize
+HiBench/conf/spark.conf master local[\*]
