@@ -3,6 +3,8 @@ import pandas as pd
 import random
 import subprocess
 import os
+import json
+import time
 from os import path
 # np.set_printoptions(precision=2, linewidth=100, suppress=True)
 # pd.options.display.float_format = '{:,.2f}'.format
@@ -11,7 +13,7 @@ workload = ['lda', 'lr']
 df = pd.read_csv("conf_chaoqin.csv")
 for k in range(len(workload)):
     subprocess.call(['./bin/workloads/ml/' + workload[k] + '/prepare/prepare.sh'])
-    for i in range(2):
+    for i in range(pd.shape[0]):
         cur_path = os.path.dirname(__file__)
         f = open(os.path.join(cur_path, '..\\conf\\spark.conf'), "w")
         f.write("hibench.spark.home      $SPARK_HOME")
@@ -43,10 +45,11 @@ for k in range(len(workload)):
         f.write('spark.memory.storageFraction  ' + str(df.at[i, 'spark.memory.storageFraction']))
         f.close()
         subprocess.call(['./bin/workloads/ml/' + workload[k] + '/spark/run.sh'])
+        #time.sleep(15)
         filelist = os.listdir("/home/cc/spark-2.1.3-bin-hadoop2.7/mylog")
         for filename in filelist:
             if 'local' in filename:
-                jfile = open(os.path.join('/home/cc/spark-2.1.3-bin-hadoop2.7/mylog', file))
+                jfile = open(os.path.join('/home/cc/spark-2.1.3-bin-hadoop2.7/mylog', filename), 'r')
                 lines = jfile.readlines()
                 peak_memory = list()
                 for line in lines:
@@ -56,8 +59,11 @@ for k in range(len(workload)):
                             if "internal.metrics.peakExecutionMemory" in dict2.values():
                                 peak_memory.append(dict2["Value"])
                 jfile.close()
-                mem_log = open(os.path.join(cur_path, '..\\memoryLog'), "w")
-                mem_log.write(str(peak_memory))
+                mem_log = open("memoryLog", "a")
+                mem_log.write(str(peak_memory) + "\n")
+                #mem_log.write(str(len(filelist)) + "\n")
                 mem_log.close()
-        subprocess.call(['rm', '/home/cc/spark-2.1.3-bin-hadoop2.7/mylog/*'])                            
+       # subprocess.call(['rm', '$SPARK_HOME/mylog/*'])
+                os.remove(os.path.join('/home/cc/spark-2.1.3-bin-hadoop2.7/mylog', filename))
+                #time.sleep(5)                           
     subprocess.call(['mv', 'report/hibench.report', 'report/spark_' + workload[k] + '.report'])
