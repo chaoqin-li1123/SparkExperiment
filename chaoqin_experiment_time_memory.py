@@ -13,7 +13,7 @@ workload = ['lda', 'lr']
 df = pd.read_csv("conf_chaoqin.csv")
 for k in range(len(workload)):
     subprocess.call(['./bin/workloads/ml/' + workload[k] + '/prepare/prepare.sh'])
-    for i in range(pd.shape[0]):
+    for i in range(df.shape[0]):
         cur_path = os.path.dirname(__file__)
         f = open(os.path.join(cur_path, '..\\conf\\spark.conf'), "w")
         f.write("hibench.spark.home      $SPARK_HOME")
