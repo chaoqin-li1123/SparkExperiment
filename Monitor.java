@@ -17,20 +17,39 @@ public class Monitor {
 	 * @throws InterruptedException 
 	 */
 	public static void main(String[] args) throws Exception{
+		long idlemem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+		int size = 2;
+		while (size < 1000) {
+			size *= 4;
+			accuracy(size, idlemem);
+		}   
+	}
+	public static void accuracy(int size, long idlemem) throws Exception {
+		int[][][] array = new int[size][256][1024];
+		long maxmem = 0;
+		for (int time = 0; time < 5; time++) {
+			long mem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+			if (maxmem < mem) maxmem = mem;  
+			array[0][1][0] = 5;
+	        Thread.sleep(400);
+		}
+		write(maxmem, size, idlemem);
+		array = null;
+	}
+	public static void write(long mem, int expected, long idlemem) throws Exception{
+		mem -= idlemem;
+		mem /= (1024 * 1024);
 		File homedir = new File(System.getProperty("user.home"));
 		File file = new File(homedir, "/supercool.txt");
 		FileWriter fr = null;
-		fr = new FileWriter(file);
-		for (int i = 0; i < 10; i++) {
-			fr.write(Long.toString(System.currentTimeMillis()) + "\n");
-	        	fr.write("Used Memory   :  " + (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) + " bytes\n");
-	        	fr.write("Free Memory   : " + Runtime.getRuntime().freeMemory() + " bytes\n");
-	        	fr.write("Total Memory  : " + Runtime.getRuntime().totalMemory() + " bytes\n");
-	        	fr.write("Max Memory    : " + Runtime.getRuntime().maxMemory() + " bytes\n\n");     
-	        	Thread.sleep(4000);
-		}
-		fr.close();
-   
+		BufferedWriter br = null;
+		fr = new FileWriter(file, true);
+		br = new BufferedWriter(fr);
+		String str = "Expected : " + expected + " MB,   ";
+		str += "Actual : " + mem + " MB\n";
+		br.append(str);
+		br.close();
+		fr.close();		
 	}
 
 }
