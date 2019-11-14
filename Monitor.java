@@ -18,10 +18,11 @@ public class Monitor {
 	 */
 	public static void main(String[] args) throws Exception{
 		long idlemem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-		int size = 2;
+		int size = 124;
 		while (size < 1000) {
-			size *= 4;
+			size *= 2;
 			accuracy(size, idlemem);
+			Thread.sleep(5000);
 		}   
 	}
 	public static void accuracy(int size, long idlemem) throws Exception {
