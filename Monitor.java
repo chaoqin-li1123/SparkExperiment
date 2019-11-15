@@ -1,56 +1,70 @@
-
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 
- 
 public class Monitor {
-
-	/**
-	 * @param args
-	 * @throws InterruptedException 
-	 */
 	public static void main(String[] args) throws Exception{
-		long idlemem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-		int size = 124;
-		while (size < 1000) {
-			size *= 2;
-			accuracy(size, idlemem);
-			Thread.sleep(5000);
-		}   
+		File homedir = new File(System.getProperty("user.home"));
+		File file = new File(homedir, "/signal.txt");
+		while (true) {
+			BufferedReader br = new BufferedReader(new FileReader(file));
+			String str = br.readLine();
+			br.close();
+			// If the job hasn't started.
+	        if (str == null || str.charAt(0) == '-') {
+	        	Thread.sleep(1300);
+	        	continue;
+	        }
+	        // Detect start signal, start monitoring.
+			if (str.charAt(0) == '+') monitor(100);
+			// Detect exit signal, exit.
+			if (str.charAt(0) == '!') break;
+		}
+		System.out.println("monitor exit.");
+
 	}
-	public static void accuracy(int size, long idlemem) throws Exception {
-		int[][][] array = new int[size][256][1024];
+	public static void monitor(int period) throws Exception {
+		// Call garbage collection explicitly.
+		System.gc();
+		long idlemem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 		long maxmem = 0;
-		for (int time = 0; time < 5; time++) {
+		while (true) {
 			long mem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 			if (maxmem < mem) maxmem = mem;  
-			array[0][1][0] = 5;
-	        Thread.sleep(400);
+	        Thread.sleep(period);
+	        if (jobEnd()) break;
 		}
-		write(maxmem, size, idlemem);
-		array = null;
+		wrt_mem_log((maxmem - idlemem) + "\n");
 	}
-	public static void write(long mem, int expected, long idlemem) throws Exception{
-		mem -= idlemem;
-		mem /= (1024 * 1024);
+	
+	public static boolean jobEnd() throws Exception{
 		File homedir = new File(System.getProperty("user.home"));
-		File file = new File(homedir, "/supercool.txt");
+		File file = new File(homedir, "/signal.txt");
+		BufferedReader br = new BufferedReader(new FileReader(file));
+		String str = br.readLine();
+		br.close();
+		if (str.charAt(0) == '-') {
+			wrt_mem_log(str + ": ");
+			return true;
+		}
+
+		return false;
+	}
+	
+	public static void wrt_mem_log(String str) throws IOException {
+		File homedir = new File(System.getProperty("user.home"));
+		File file = new File(homedir, "/mem_log.txt");
 		FileWriter fr = null;
 		BufferedWriter br = null;
 		fr = new FileWriter(file, true);
 		br = new BufferedWriter(fr);
-		String str = "Expected : " + expected + " MB,   ";
-		str += "Actual : " + mem + " MB\n";
 		br.append(str);
 		br.close();
-		fr.close();		
+		fr.close();
 	}
 
 }
