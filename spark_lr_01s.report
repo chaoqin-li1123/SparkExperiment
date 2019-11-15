@@ -1,0 +1,11 @@
+Type         Date       Time     Input_data_size      Duration(s)          Throughput(bytes/s)  Throughput/node     
+LogisticRegression 2019-11-14 23:18:16 807074               7.365                109582               109582              
+LogisticRegression 2019-11-14 23:18:36 807074               7.356                109716               109716              
+LogisticRegression 2019-11-14 23:18:56 807074               7.286                110770               110770              
+LogisticRegression 2019-11-14 23:19:15 807074               7.249                111335               111335              
+LogisticRegression 2019-11-14 23:19:34 807074               7.390                109211               109211              
+LogisticRegression 2019-11-14 23:19:54 807074               7.444                108419               108419              
+LogisticRegression 2019-11-14 23:20:14 807074               7.385                109285               109285              
+LogisticRegression 2019-11-14 23:20:33 807074               7.404                109005               109005              
+LogisticRegression 2019-11-14 23:20:53 807074               7.410                108916               108916              
+LogisticRegression 2019-11-14 23:21:12 807074               7.491                107739               107739              
