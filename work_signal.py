@@ -22,21 +22,20 @@ def begin():
     signal('+')
 
 
-def end(info):
+def e:nd(info):
     signal('- ' + info)
 
 
 def monitor_exit():
     signal('!')
 
-
-workload = ['lda', 'lr']
+i = 1
+workload = ['lr']
 df = pd.read_csv("conf_chaoqin.csv")
 for k in range(len(workload)):
-    #subprocess.call(['./bin/workloads/ml/' + workload[k] + '/prepare/prepare.sh'])
-    #for i in range(df.shape[0]):
-    for times in range(10):
-        i = 1
+     subprocess.call(['./bin/workloads/ml/' + workload[k] + '/prepare/prepare.sh'])
+   # for i in range(df.shape[0]):
+    for times in range(100):
         # rewrite spark.conf
         cur_path = os.path.dirname(__file__)
         f = open(os.path.join(cur_path, '..\\conf\\spark.conf'), "w")
@@ -73,7 +72,7 @@ for k in range(len(workload)):
         # run spark work load
         subprocess.call(['./bin/workloads/ml/' + workload[k] + '/spark/run.sh'])
         # signal the monitor to write log of memory consumption.
-        end(workload[k] + ' ' + str(k))
+        end(workload[k] + ' ' + str(times))
         time.sleep(4.5)
     subprocess.call(['mv', 'report/hibench.report', 'report/spark_' + workload[k] + '.report'])
 monitor_exit()
