@@ -6,21 +6,43 @@ import os
 import json
 import time
 from os import path
-# np.set_printoptions(precision=2, linewidth=100, suppress=True)
-# pd.options.display.float_format = '{:,.2f}'.format
-# pd.set_option('display.width',500)
-workload = ['lda', 'lr']
+from os.path import expanduser
+
+home = expanduser("~")
+mypath = home + '/signal.txt'
+
+
+def signal(string):
+    f = open(mypath, "w")
+    f.write(string)
+    f.close()
+
+
+def begin():
+    signal('+')
+
+
+def end(info):
+    signal('- ' + info)
+
+
+def monitor_exit():
+    signal('!')
+
+
+workload = ['lr']
 df = pd.read_csv("conf_chaoqin.csv")
 for k in range(len(workload)):
-    subprocess.call(['./bin/workloads/ml/' + workload[k] + '/prepare/prepare.sh'])
-    for i in range(df.shape[0]):
+    #subprocess.call(['./bin/workloads/ml/' + workload[k] + '/prepare/prepare.sh'])
+    #for i in range(df.shape[0]):
+    for times in range(100):
+        i = 1
+        # rewrite spark.conf
         cur_path = os.path.dirname(__file__)
         f = open(os.path.join(cur_path, '..\\conf\\spark.conf'), "w")
         f.write("hibench.spark.home      $SPARK_HOME")
         f.write("hibench.spark.master  local[*]")
-        f.write("spark.eventLog.enabled           true")
-        f.write("spark.eventLog.dir               /home/cc/spark-2.1.3-bin-hadoop2.7/mylog")
-        f.write("spark.history.fs.logDirectory    /home/cc/spark-2.1.3-bin-hadoop2.7/mylog")
+        f.write("spark.eventLog.enabled           false")
         f.write("spark.sql.shuffle.partitions  ${hibench.default.shuffle.parallelism}")
         f.write("spark.default.parallelism     ${hibench.default.map.parallelism}")
         f.write('spark.reducer.maxSizeInFlight  ' + str(df.at[i,'spark.reducer.maxSizeInFlight']))
@@ -44,26 +66,14 @@ for k in range(len(workload)):
         f.write('spark.broadcast.compress  ' + str(df.at[i, 'spark.broadcast.compress']))
         f.write('spark.memory.storageFraction  ' + str(df.at[i, 'spark.memory.storageFraction']))
         f.close()
-        subprocess.call(['./bin/workloads/ml/' + workload[k] + '/spark/run.sh'])
-        #time.sleep(15)
-        filelist = os.listdir("/home/cc/spark-2.1.3-bin-hadoop2.7/mylog")
-        for filename in filelist:
-            if 'local' in filename:
-                jfile = open(os.path.join('/home/cc/spark-2.1.3-bin-hadoop2.7/mylog', filename), 'r')
-                lines = jfile.readlines()
-                peak_memory = list()
-                for line in lines:
-                    dict1 = json.loads(line)
-                    if dict1["Event"] == "SparkListenerStageCompleted":
-                        for dict2 in dict1["Stage Info"]["Accumulables"]:
-                            if "internal.metrics.peakExecutionMemory" in dict2.values():
-                                peak_memory.append(dict2["Value"])
-                jfile.close()
-                mem_log = open("memoryLog", "a")
-                mem_log.write(str(peak_memory) + "\n")
-                #mem_log.write(str(len(filelist)) + "\n")
-                mem_log.close()
-       # subprocess.call(['rm', '$SPARK_HOME/mylog/*'])
-                os.remove(os.path.join('/home/cc/spark-2.1.3-bin-hadoop2.7/mylog', filename))
-                #time.sleep(5)                           
+        # signal the monitor to start.
+        begin()
+        # start monitor and collect garbage.
+        time.sleep(4.5)
+        # run spark work load
+        #subprocess.call(['./bin/workloads/ml/' + workload[k] + '/spark/run.sh'])
+        # signal the monitor to write log of memory consumption.
+        end(workload[k] + ' ' + str(k))
+        time.sleep(4.5)
     subprocess.call(['mv', 'report/hibench.report', 'report/spark_' + workload[k] + '.report'])
+monitor_exit()
