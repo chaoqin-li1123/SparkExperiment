@@ -22,32 +22,30 @@ def begin():
     signal('+')
 
 
-def e:nd(info):
+def end(info):
     signal('- ' + info)
 
 
 def monitor_exit():
     signal('!')
 
-i = 1
-workload = ['lr']
+
+workload = ['lda']
 df = pd.read_csv("conf_chaoqin.csv")
 for k in range(len(workload)):
-<<<<<<< HEAD
     subprocess.call(['./bin/workloads/ml/' + workload[k] + '/prepare/prepare.sh'])
-    #for i in range(df.shape[0]):
-    for times in range(10):
-        i = 1
-=======
-     subprocess.call(['./bin/workloads/ml/' + workload[k] + '/prepare/prepare.sh'])
+    for i in range(df.shape[0]):
+    #for times in range(10):
+ 
+    # subprocess.call(['./bin/workloads/ml/' + workload[k] + '/prepare/prepare.sh'])
+        os.system("cp conf/spark.conf.template conf/spark.conf")
    # for i in range(df.shape[0]):
-    for times in range(100):
->>>>>>> fb4581f5e022760cb6a23002c53bf4eba5b4ebc5
+    #for times in range(100):
         # rewrite spark.conf
+       # cur_path = os.path.dirname(__file__)
+       # f = open(cur_path + '/conf/spark.conf', "w")
         cur_path = os.path.dirname(__file__)
-        f = open(cur_path + '/conf/spark.conf', "w")
-        cur_path = os.path.dirname(__file__)
-        f = open(os.path.join(cur_path + '/conf/spark.conf'), "w")
+        f = open(home + '/HiBench/conf/spark.conf', "w")
         f.write("hibench.spark.home      $SPARK_HOME\n")
         f.write("hibench.spark.master  local[*]\n")
         f.write("spark.eventLog.enabled           false\n")
@@ -84,7 +82,9 @@ for k in range(len(workload)):
         # run spark work load
         subprocess.call(['./bin/workloads/ml/' + workload[k] + '/spark/run.sh'])
         # signal the monitor to write log of memory consumption.
-        end(workload[k] + ' ' + str(times))
+        end(workload[k] + ' ' + str(i))
+        p = os.system("sudo sh -c \"sync; echo 3 > /proc/sys/vm/drop_caches\"")
         time.sleep(4.5)
+        os.system("rm conf/spark.conf")
     subprocess.call(['mv', 'report/hibench.report', 'report/spark_' + workload[k] + '.report'])
 monitor_exit()
