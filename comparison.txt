@@ -1,7 +1,0 @@
-Expected : 4 MB,   Actual : 0 MB
-Expected : 8 MB,   Actual : 10 MB
-Expected : 16 MB,   Actual : 10 MB
-Expected : 32 MB,   Actual : 30 MB
-Expected : 64 MB,   Actual : 71 MB
-Expected : 128 MB,   Actual : 123 MB
-Expected : 256 MB,   Actual : 256 MB
