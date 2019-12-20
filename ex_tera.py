@@ -35,6 +35,7 @@ def collect_io():
     file.write(" bytesWritten" + ": " + str(wbytes) + " ")
     file.close()
 
+
 def collect_mem(workload, i):
     max = 0
     log = open("/home/cc/HiBench/report/" + workload +  "/spark/monitor.log", "r")
@@ -47,7 +48,7 @@ def collect_mem(workload, i):
                 if temp > max:
                     max = temp
     file = open("log.txt", "a")
-    file.write(workload + " " + str(i) + ": " + str(max))
+    file.write(workload + " " + str(i) + "\n memory(kb): " + str(max) + "\n")
     file.close()
 
 
@@ -69,6 +70,18 @@ def collect_cputime():
     file = open("log.txt", "a")
     file.write(" cputime" + ": " + str(cputime) + "\n")
     file.close()
+
+
+def collect_perf_data():
+    f = open("log", "r")
+    lines = f.readlines()
+    f.close()
+    f1 = open("log.txt", "a")
+    for line in lines:
+        f1.write(line)
+    f1.write("-" * 100 + "\n")
+    f1.close()
+
 
 workload = ['wordcount']
 df = pd.read_csv("conf_chaoqin.csv")
@@ -113,11 +126,19 @@ for k in range(len(workload)):
         f.write('spark.eventLog.dir               /home/cc/spark-2.1.3-bin-hadoop2.7/mylog\n')
         f.write('spark.history.fs.logDirectory    /home/cc/spark-2.1.3-bin-hadoop2.7/mylog\n')
         f.close()
-        subprocess.call(['./bin/workloads/micro/' + workload[k] + '/spark/run.sh'])
-        time.sleep(5)
+        os.system("rm /home/cc/HiBench/perf.txt")
+        time.sleep(2)
+        subprocess.call(['perf', 'stat', '-B', '-e', 'branches,branch-misses,bus-cycles,cache-misses,'
+                                                     'cache-references,cpu-cycles,instructions,ref-cycles,'
+                                                     'alignment-faults,context-switches,cpu-clock,cpu-migrations,'
+                                                     'emulation-faults,major-faults,minor-faults,page-faults,'
+                                                     'task-clock', '-o', 'perf.txt', './bin/workloads/micro/' + workload[k] +
+                         '/spark/run.sh'])
+        time.sleep(2)
         collect_mem(workload[k], i)
         collect_io()
         collect_cputime()
+        collect_perf_data()
         time.sleep(5)
         p = os.system("sudo sh -c \"sync; echo 3 > /proc/sys/vm/drop_caches\"")
 
