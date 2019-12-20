@@ -1,0 +1,290 @@
+wordcount 4
+ memory(kb): 4370028
+ bytesRead: 547499207  bytesWritten: 27391  cputime: 12300583778
+# started on Fri Dec 20 17:49:25 2019
+
+
+ Performance counter stats for './bin/workloads/micro/wordcount/spark/run.sh':
+
+    24,214,101,656      branches                  #  515.598 M/sec                    (75.25%)
+       646,613,411      branch-misses             #    2.67% of all branches          (75.06%)
+     1,151,639,673      bus-cycles                #   24.522 M/sec                    (75.31%)
+2,232,927,836,135,736      cache-misses              #  803.989 % of all cache refs      (75.63%)
+277,731,183,555,827      cache-references          # 5913817.088 M/sec                    (50.67%)
+1,940,673,550,535,440      cpu-cycles                # 41323.370 GHz                      (50.77%)
+   131,819,814,697      instructions              #    0.00  insns per cycle          (63.44%)
+   119,690,154,396      ref-cycles                # 2548.600 M/sec                    (75.66%)
+                 0      alignment-faults          #    0.000 K/sec                  
+            79,467      context-switches          #    0.002 M/sec                  
+      46944.735338      cpu-clock (msec)          #  999.609 M/sec                  
+             5,229      cpu-migrations            #    0.111 K/sec                  
+                 0      emulation-faults          #    0.000 K/sec                  
+                 0      major-faults              #    0.000 K/sec                  
+           925,833      minor-faults              #    0.020 M/sec                  
+           925,946      page-faults               #    0.020 M/sec                  
+      46963.100048      task-clock (msec)         #    3.808 CPUs utilized          
+
+      12.333742713 seconds time elapsed
+
+----------------------------------------------------------------------------------------------------
+wordcount 3
+ memory(kb): 5999140
+ bytesRead: 547499207  bytesWritten: 27391  cputime: 12463882956
+# started on Fri Dec 20 17:49:48 2019
+
+
+ Performance counter stats for './bin/workloads/micro/wordcount/spark/run.sh':
+
+    24,006,373,642      branches                  #  510.072 M/sec                    (75.52%)
+       652,108,556      branch-misses             #    2.72% of all branches          (75.30%)
+     1,153,221,603      bus-cycles                #   24.503 M/sec                    (75.53%)
+1,856,042,967,391,127      cache-misses              #  221.446 % of all cache refs      (75.83%)
+838,148,753,179,437      cache-references          # 17808441.289 M/sec                    (50.37%)
+3,345,556,348,757,971      cpu-cycles                # 71084.212 GHz                      (50.48%)
+   131,728,500,790      instructions              #    0.00  insns per cycle          (63.23%)
+   119,695,959,395      ref-cycles                # 2543.222 M/sec                    (75.68%)
+                 0      alignment-faults          #    0.000 K/sec                  
+            86,641      context-switches          #    0.002 M/sec                  
+      47042.270909      cpu-clock (msec)          #  999.524 M/sec                  
+             7,883      cpu-migrations            #    0.167 K/sec                  
+                 0      emulation-faults          #    0.000 K/sec                  
+               148      major-faults              #    0.003 K/sec                  
+           972,696      minor-faults              #    0.021 M/sec                  
+           972,973      page-faults               #    0.021 M/sec                  
+      47064.689131      task-clock (msec)         #    3.096 CPUs utilized          
+
+      15.200973358 seconds time elapsed
+
+----------------------------------------------------------------------------------------------------
+wordcount 2
+ memory(kb): 3793604
+ bytesRead: 547499207  bytesWritten: 27391  cputime: 12005414368
+# started on Fri Dec 20 17:50:12 2019
+
+
+ Performance counter stats for './bin/workloads/micro/wordcount/spark/run.sh':
+
+    24,498,884,362      branches                  #  528.627 M/sec                    (74.87%)
+       660,971,624      branch-misses             #    2.70% of all branches          (75.06%)
+     1,134,496,165      bus-cycles                #   24.480 M/sec                    (75.35%)
+2,043,684,992,534,225      cache-misses              # 197744775.779 % of all cache refs      (75.75%)
+     1,033,496,326      cache-references          #   22.300 M/sec                    (50.99%)
+3,320,184,171,183,554      cpu-cycles                # 71641.650 GHz                      (50.87%)
+   133,646,575,729      instructions              #    0.00  insns per cycle          (63.11%)
+   118,275,848,703      ref-cycles                # 2552.111 M/sec                    (75.17%)
+                 0      alignment-faults          #    0.000 K/sec                  
+            85,059      context-switches          #    0.002 M/sec                  
+      46322.698538      cpu-clock (msec)          #  999.533 M/sec                  
+             7,274      cpu-migrations            #    0.157 K/sec                  
+                 0      emulation-faults          #    0.000 K/sec                  
+               148      major-faults              #    0.003 K/sec                  
+           855,595      minor-faults              #    0.018 M/sec                  
+           855,901      page-faults               #    0.018 M/sec                  
+      46344.328499      task-clock (msec)         #    3.287 CPUs utilized          
+
+      14.098503333 seconds time elapsed
+
+----------------------------------------------------------------------------------------------------
+wordcount 1
+ memory(kb): 5798872
+ bytesRead: 547499207  bytesWritten: 27391  cputime: 12236451780
+# started on Fri Dec 20 17:50:36 2019
+
+
+ Performance counter stats for './bin/workloads/micro/wordcount/spark/run.sh':
+
+    24,230,453,839      branches                  #  511.995 M/sec                    (75.64%)
+       659,358,164      branch-misses             #    2.72% of all branches          (75.37%)
+     1,162,395,467      bus-cycles                #   24.562 M/sec                    (75.05%)
+2,435,394,753,612,647      cache-misses              #  437.247 % of all cache refs      (75.12%)
+556,983,922,939,444      cache-references          # 11769189.257 M/sec                    (50.54%)
+2,752,178,162,469,424      cpu-cycles                # 58154.112 GHz                      (51.14%)
+   132,300,912,352      instructions              #    0.00  insns per cycle          (63.71%)
+   120,776,430,806      ref-cycles                # 2552.032 M/sec                    (75.78%)
+                 0      alignment-faults          #    0.000 K/sec                  
+            85,220      context-switches          #    0.002 M/sec                  
+      47303.683688      cpu-clock (msec)          #  999.537 M/sec                  
+             7,896      cpu-migrations            #    0.167 K/sec                  
+                 0      emulation-faults          #    0.000 K/sec                  
+               148      major-faults              #    0.003 K/sec                  
+           912,388      minor-faults              #    0.019 M/sec                  
+           912,669      page-faults               #    0.019 M/sec                  
+      47325.598285      task-clock (msec)         #    3.210 CPUs utilized          
+
+      14.743232564 seconds time elapsed
+
+----------------------------------------------------------------------------------------------------
+wordcount 0
+ memory(kb): 3696852
+ bytesRead: 547499207  bytesWritten: 27391  cputime: 12219895742
+# started on Fri Dec 20 17:51:00 2019
+
+
+ Performance counter stats for './bin/workloads/micro/wordcount/spark/run.sh':
+
+    23,630,975,401      branches                  #  506.679 M/sec                    (75.63%)
+       635,955,170      branch-misses             #    2.69% of all branches          (75.67%)
+     1,143,998,913      bus-cycles                #   24.529 M/sec                    (75.40%)
+2,250,123,817,609,733      cache-misses              # 220062934.204 % of all cache refs      (75.06%)
+     1,022,491,055      cache-references          #   21.924 M/sec                    (50.11%)
+2,763,791,678,993,665      cpu-cycles                # 59259.361 GHz                      (50.92%)
+   129,460,910,820      instructions              #    0.00  insns per cycle          (63.61%)
+   118,923,633,705      ref-cycles                # 2549.881 M/sec                    (75.65%)
+                 0      alignment-faults          #    0.000 K/sec                  
+            86,025      context-switches          #    0.002 M/sec                  
+      46616.846371      cpu-clock (msec)          #  999.527 M/sec                  
+             7,676      cpu-migrations            #    0.165 K/sec                  
+                 0      emulation-faults          #    0.000 K/sec                  
+               148      major-faults              #    0.003 K/sec                  
+           902,448      minor-faults              #    0.019 M/sec                  
+           902,745      page-faults               #    0.019 M/sec                  
+      46638.904716      task-clock (msec)         #    3.181 CPUs utilized          
+
+      14.661865225 seconds time elapsed
+
+----------------------------------------------------------------------------------------------------
+wordcount 1
+ memory(kb): 5934392
+ bytesRead: 547487940  bytesWritten: 27391  cputime: 12147495614
+# started on Fri Dec 20 17:53:14 2019
+
+
+ Performance counter stats for './bin/workloads/micro/wordcount/spark/run.sh':
+
+    24,173,654,495      branches                  #  522.086 M/sec                    (75.01%)
+       650,166,266      branch-misses             #    2.69% of all branches          (75.40%)
+     1,132,132,853      bus-cycles                #   24.451 M/sec                    (75.66%)
+1,852,299,674,712,183      cache-misses              #  667.089 % of all cache refs      (75.98%)
+277,669,064,942,753      cache-references          # 5996905.310 M/sec                    (50.69%)
+2,514,311,321,289,752      cpu-cycles                # 54302.365 GHz                      (50.38%)
+   133,448,727,304      instructions              #    0.00  insns per cycle          (62.84%)
+   118,115,679,014      ref-cycles                # 2550.981 M/sec                    (75.10%)
+                 0      alignment-faults          #    0.000 K/sec                  
+            84,364      context-switches          #    0.002 M/sec                  
+      46280.157854      cpu-clock (msec)          #  999.527 M/sec                  
+             7,285      cpu-migrations            #    0.157 K/sec                  
+                 0      emulation-faults          #    0.000 K/sec                  
+                 4      major-faults              #    0.000 K/sec                  
+           934,058      minor-faults              #    0.020 M/sec                  
+           934,228      page-faults               #    0.020 M/sec                  
+      46302.059244      task-clock (msec)         #    3.211 CPUs utilized          
+
+      14.418911729 seconds time elapsed
+
+----------------------------------------------------------------------------------------------------
+wordcount 1
+ memory(kb): 3712964
+ bytesRead: 547487940  bytesWritten: 27391  cputime: 12337871980
+# started on Fri Dec 20 17:53:38 2019
+
+
+ Performance counter stats for './bin/workloads/micro/wordcount/spark/run.sh':
+
+    24,268,365,627      branches                  #  505.301 M/sec                    (75.43%)
+       656,707,616      branch-misses             #    2.71% of all branches          (75.04%)
+     1,177,732,650      bus-cycles                #   24.522 M/sec                    (74.93%)
+2,432,982,850,454,101      cache-misses              #  293.905 % of all cache refs      (75.20%)
+827,812,035,199,190      cache-references          # 17236201.971 M/sec                    (51.00%)
+1,923,354,030,134,244      cpu-cycles                # 40046.915 GHz                      (51.22%)
+   132,086,549,466      instructions              #    0.00  insns per cycle          (63.62%)
+   122,732,332,864      ref-cycles                # 2555.458 M/sec                    (75.70%)
+                 0      alignment-faults          #    0.000 K/sec                  
+            86,766      context-switches          #    0.002 M/sec                  
+      48005.269068      cpu-clock (msec)          #  999.537 M/sec                  
+             8,023      cpu-migrations            #    0.167 K/sec                  
+                 0      emulation-faults          #    0.000 K/sec                  
+               148      major-faults              #    0.003 K/sec                  
+           926,386      minor-faults              #    0.019 M/sec                  
+           926,702      page-faults               #    0.019 M/sec                  
+      48027.520019      task-clock (msec)         #    3.243 CPUs utilized          
+
+      14.807364746 seconds time elapsed
+
+----------------------------------------------------------------------------------------------------
+wordcount 1
+ memory(kb): 4578044
+ bytesRead: 547487940  bytesWritten: 27391  cputime: 12078051661
+# started on Fri Dec 20 17:54:02 2019
+
+
+ Performance counter stats for './bin/workloads/micro/wordcount/spark/run.sh':
+
+    23,863,977,725      branches                  #  513.122 M/sec                    (75.29%)
+       662,927,168      branch-misses             #    2.78% of all branches          (75.34%)
+     1,138,880,558      bus-cycles                #   24.488 M/sec                    (75.50%)
+2,238,711,800,823,187      cache-misses              #  801.102 % of all cache refs      (75.44%)
+279,453,954,869,021      cache-references          # 6008799.587 M/sec                    (50.36%)
+2,772,643,893,981,390      cpu-cycles                # 59617.197 GHz                      (50.76%)
+   131,419,179,601      instructions              #    0.00  insns per cycle          (63.34%)
+   118,456,322,003      ref-cycles                # 2547.040 M/sec                    (75.53%)
+                 0      alignment-faults          #    0.000 K/sec                  
+            85,966      context-switches          #    0.002 M/sec                  
+      46485.024229      cpu-clock (msec)          #  999.518 M/sec                  
+             7,748      cpu-migrations            #    0.167 K/sec                  
+                 0      emulation-faults          #    0.000 K/sec                  
+               148      major-faults              #    0.003 K/sec                  
+           987,512      minor-faults              #    0.021 M/sec                  
+           987,808      page-faults               #    0.021 M/sec                  
+      46507.451420      task-clock (msec)         #    3.080 CPUs utilized          
+
+      15.097555222 seconds time elapsed
+
+----------------------------------------------------------------------------------------------------
+wordcount 1
+ memory(kb): 5761616
+ bytesRead: 547487940  bytesWritten: 27391  cputime: 11999850363
+# started on Fri Dec 20 17:54:26 2019
+
+
+ Performance counter stats for './bin/workloads/micro/wordcount/spark/run.sh':
+
+    23,727,105,989      branches                  #  515.852 M/sec                    (75.78%)
+       647,939,125      branch-misses             #    2.73% of all branches          (75.94%)
+     1,126,940,566      bus-cycles                #   24.501 M/sec                    (75.86%)
+2,427,460,542,791,049      cache-misses              #  427.552 % of all cache refs      (75.37%)
+567,757,620,926,109      cache-references          # 12343649.300 M/sec                    (49.58%)
+2,798,272,111,857,431      cpu-cycles                # 60837.386 GHz                      (50.30%)
+   131,517,899,897      instructions              #    0.00  insns per cycle          (63.31%)
+   117,169,831,779      ref-cycles                # 2547.396 M/sec                    (75.48%)
+                 0      alignment-faults          #    0.000 K/sec                  
+            85,687      context-switches          #    0.002 M/sec                  
+      45973.553013      cpu-clock (msec)          #  999.514 M/sec                  
+             7,440      cpu-migrations            #    0.162 K/sec                  
+                 0      emulation-faults          #    0.000 K/sec                  
+               148      major-faults              #    0.003 K/sec                  
+           903,927      minor-faults              #    0.020 M/sec                  
+           904,233      page-faults               #    0.020 M/sec                  
+      45995.929335      task-clock (msec)         #    3.094 CPUs utilized          
+
+      14.864142872 seconds time elapsed
+
+----------------------------------------------------------------------------------------------------
+wordcount 1
+ memory(kb): 3824000
+ bytesRead: 547487940  bytesWritten: 27391  cputime: 12528001134
+# started on Fri Dec 20 17:54:51 2019
+
+
+ Performance counter stats for './bin/workloads/micro/wordcount/spark/run.sh':
+
+    24,582,193,750      branches                  #  483.421 M/sec                    (75.40%)
+       661,870,828      branch-misses             #    2.69% of all branches          (75.43%)
+     1,248,604,546      bus-cycles                #   24.554 M/sec                    (75.46%)
+2,983,790,471,567,152      cache-misses              # 281757312.919 % of all cache refs      (75.47%)
+     1,058,993,089      cache-references          #   20.826 M/sec                    (50.22%)
+2,223,510,876,885,161      cpu-cycles                # 43726.479 GHz                      (50.64%)
+   134,087,196,175      instructions              #    0.00  insns per cycle          (63.27%)
+   129,755,805,092      ref-cycles                # 2551.714 M/sec                    (75.54%)
+                 0      alignment-faults          #    0.000 K/sec                  
+            84,430      context-switches          #    0.002 M/sec                  
+      50829.611639      cpu-clock (msec)          #  999.590 M/sec                  
+             7,154      cpu-migrations            #    0.141 K/sec                  
+                 0      emulation-faults          #    0.000 K/sec                  
+               148      major-faults              #    0.003 K/sec                  
+           888,689      minor-faults              #    0.017 M/sec                  
+           888,988      page-faults               #    0.017 M/sec                  
+      50850.443729      task-clock (msec)         #    3.533 CPUs utilized          
+
+      14.393033089 seconds time elapsed
+
+----------------------------------------------------------------------------------------------------
