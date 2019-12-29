@@ -52,5 +52,5 @@ for line in lines:
         csv.write(words[4].replace(",", "") + ",")
     elif words[1] == "seconds":
         csv.write(words[0].replace(",", "") + "\n")
-
+csv.close()
 
