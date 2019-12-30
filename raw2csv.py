@@ -20,7 +20,7 @@ for metric in metrics0:
         csv.write(metric + "," + metric + "(M/sec),")
     elif metric in ksec:
         csv.write(metric + "," + metric + "(K/sec),")
-csv.write("task-clock(M/sec),CPUs,")
+csv.write("task-clock(msec),CPUs,")
 csv.write("duration(s)\n")
 metrics1 = ["branches", "branch-misses", "bus-cycles", "cache-misses", "cache-references", "cpu-cycles", "instructions", "ref-cycles"]
 metrics2 = ["context-switches", "cpu-migrations", "major-faults", "minor-faults", "emulation-faults", "page-faults"]
