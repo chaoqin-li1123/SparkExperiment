@@ -26,3 +26,9 @@ worker.sink.csv.unit=seconds
 
 HiBench/conf/hibench.conf datasize
 HiBench/conf/spark.conf master local[\*]
+
+ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+chmod 0600 ~/.ssh/authorized_keys
+ssh-keygen -R 192.5.87.230
+
