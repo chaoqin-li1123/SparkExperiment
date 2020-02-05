@@ -1,4 +1,5 @@
 import time
+import os
 def detect_signal():
     filelist = os.listdir("/home/cc")
     for filename in filelist:

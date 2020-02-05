@@ -13,13 +13,14 @@ def detect_signal():
                                                          'alignment-faults,context-switches,cpu-clock,cpu-migrations,'
                                                          'emulation-faults,major-faults,minor-faults,page-faults,'
                                                          'task-clock', '-o', 'perf.txt', 'python3.7', 'nothing.py'])
-            os.system("rm home/cc/start*")
+            os.system("rm start*")
+            time.sleep(1)
             file = open("log.txt", "a")
             file.write(filename + "\n")
             file.close()
         if "end" in filename:
             time.sleep(1.5)
-            os.system("rm /home/cc/end")
+            os.system("rm end")
             time.sleep(1.5)
             f = open("perf.txt", "r")
             lines = f.readlines()
