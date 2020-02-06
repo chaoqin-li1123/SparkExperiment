@@ -11,4 +11,4 @@ def detect_signal():
 while True:
     if detect_signal():
         break
-    time.sleep(0.5)
+    time.sleep(0.3)
