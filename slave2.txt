@@ -1,0 +1,135 @@
+start-wordcount-4
+# started on Thu Feb  6 02:34:30 2020
+
+
+ Performance counter stats for 'system wide':
+
+1,169,352,182,378,508      branches                  # 888692.453 M/sec                    (60.18%)
+        52,513,484      branch-misses             #    0.00% of all branches          (61.20%)
+       415,271,505      bus-cycles                #    0.316 M/sec                    (74.99%)
+750,552,181,729,256      cache-misses              #   19.048 % of all cache refs      (75.00%)
+3,940,310,918,932,833      cache-references          # 2994585.062 M/sec                    (75.01%)
+10,230,142,218,138,880      cpu-cycles                # 7774.775 GHz                      (53.65%)
+     2,750,005,420      instructions              #    0.00  insns per cycle          (62.50%)
+    43,268,075,289      ref-cycles                #   32.883 M/sec                    (74.98%)
+                 0      alignment-faults          #    0.000 K/sec                    (100.00%)
+            17,850      context-switches          #    0.014 K/sec                    (100.00%)
+    1315622.097803      cpu-clock (msec)          #  999.856 M/sec                    (100.00%)
+               782      cpu-migrations            #    0.001 K/sec                    (100.00%)
+                 0      emulation-faults          #    0.000 K/sec                    (100.00%)
+                 0      major-faults              #    0.000 K/sec                    (100.00%)
+            20,173      minor-faults              #    0.015 K/sec                    (100.00%)
+            20,175      page-faults               #    0.015 K/sec                    (100.00%)
+    1315811.986352      task-clock (msec)         #   48.085 CPUs utilized          
+
+      27.364431270 seconds time elapsed
+
+----------------------------------------------------------------------------------------------------
+start-wordcount-3
+# started on Thu Feb  6 02:35:16 2020
+
+
+ Performance counter stats for 'system wide':
+
+243,319,069,654,446      branches                  # 200360.324 M/sec                    (57.84%)
+        49,241,131      branch-misses             #    0.00% of all branches          (67.19%)
+       384,650,861      bus-cycles                #    0.317 M/sec                    (75.00%)
+2,439,318,010,063,956      cache-misses              #   64.991 % of all cache refs      (75.00%)
+3,753,290,379,777,845      cache-references          # 3090635.184 M/sec                    (74.99%)
+9,005,210,383,811,000      cpu-cycles                # 7415.312 GHz                      (50.01%)
+     2,797,430,318      instructions              #    0.00  insns per cycle          (62.51%)
+    40,017,340,919      ref-cycles                #   32.952 M/sec                    (75.00%)
+                 0      alignment-faults          #    0.000 K/sec                    (100.00%)
+            16,106      context-switches          #    0.013 K/sec                    (100.00%)
+    1214563.266499      cpu-clock (msec)          # 1000.128 M/sec                    (100.00%)
+               613      cpu-migrations            #    0.001 K/sec                    (100.00%)
+                 0      emulation-faults          #    0.000 K/sec                    (100.00%)
+                 0      major-faults              #    0.000 K/sec                    (100.00%)
+            20,716      minor-faults              #    0.017 K/sec                    (100.00%)
+            20,716      page-faults               #    0.017 K/sec                    (100.00%)
+    1214407.445936      task-clock (msec)         #   48.072 CPUs utilized          
+
+      25.262261521 seconds time elapsed
+
+----------------------------------------------------------------------------------------------------
+start-wordcount-2
+# started on Thu Feb  6 02:36:01 2020
+
+
+ Performance counter stats for 'system wide':
+
+1,558,050,725,225,079      branches                  # 1313796.971 M/sec                    (54.20%)
+        47,443,226      branch-misses             #    0.00% of all branches          (70.84%)
+       372,399,040      bus-cycles                #    0.314 M/sec                    (75.01%)
+938,135,440,220,528      cache-misses              #   23.805 % of all cache refs      (75.01%)
+3,940,866,139,199,339      cache-references          # 3323061.255 M/sec                    (75.00%)
+8,725,383,493,802,890      cpu-cycles                # 7357.516 GHz                      (50.00%)
+     2,638,817,831      instructions              #    0.00  insns per cycle          (62.49%)
+    38,462,805,270      ref-cycles                #   32.433 M/sec                    (74.99%)
+                 0      alignment-faults          #    0.000 K/sec                    (100.00%)
+            16,463      context-switches          #    0.014 K/sec                    (100.00%)
+    1185888.407114      cpu-clock (msec)          #  999.978 M/sec                    (100.00%)
+               640      cpu-migrations            #    0.001 K/sec                    (100.00%)
+                 0      emulation-faults          #    0.000 K/sec                    (100.00%)
+                 0      major-faults              #    0.000 K/sec                    (100.00%)
+            20,219      minor-faults              #    0.017 K/sec                    (100.00%)
+            20,219      page-faults               #    0.017 K/sec                    (100.00%)
+    1185914.383350      task-clock (msec)         #   48.088 CPUs utilized          
+
+      24.661470909 seconds time elapsed
+
+----------------------------------------------------------------------------------------------------
+start-wordcount-1
+# started on Thu Feb  6 02:36:44 2020
+
+
+ Performance counter stats for 'system wide':
+
+556,676,846,473,749      branches                  # 463672.281 M/sec                    (50.56%)
+        48,798,411      branch-misses             #    0.00% of all branches          (74.99%)
+       382,963,262      bus-cycles                #    0.319 M/sec                    (74.99%)
+        15,992,633      cache-misses              #    0.000 % of all cache refs      (75.00%)
+4,156,773,972,325,278      cache-references          # 3462297.526 M/sec                    (74.49%)
+10,413,329,021,414,914      cpu-cycles                # 8673.564 GHz                      (50.01%)
+     2,717,741,105      instructions              #    0.00  insns per cycle          (62.50%)
+    39,863,131,238      ref-cycles                #   33.203 M/sec                    (74.99%)
+                 0      alignment-faults          #    0.000 K/sec                    (100.00%)
+            16,217      context-switches          #    0.014 K/sec                    (100.00%)
+    1200504.842842      cpu-clock (msec)          #  999.935 M/sec                    (100.00%)
+               589      cpu-migrations            #    0.000 K/sec                    (100.00%)
+                 0      emulation-faults          #    0.000 K/sec                    (100.00%)
+                 0      major-faults              #    0.000 K/sec                    (100.00%)
+            20,911      minor-faults              #    0.017 K/sec                    (100.00%)
+            20,911      page-faults               #    0.017 K/sec                    (100.00%)
+    1200582.544289      task-clock (msec)         #   48.095 CPUs utilized          
+
+      24.962538359 seconds time elapsed
+
+----------------------------------------------------------------------------------------------------
+start-wordcount-0
+# started on Thu Feb  6 02:37:28 2020
+
+
+ Performance counter stats for 'system wide':
+
+2,367,445,947,762,248      branches                  # 1972055.261 M/sec                    (65.39%)
+        48,113,151      branch-misses             #    0.00% of all branches          (59.65%)
+       384,070,680      bus-cycles                #    0.320 M/sec                    (74.99%)
+562,969,109,504,759      cache-misses              #   14.286 % of all cache refs      (75.00%)
+3,940,796,191,998,315      cache-references          # 3282637.929 M/sec                    (75.00%)
+8,160,137,497,814,092      cpu-cycles                # 6797.301 GHz                      (50.02%)
+     2,589,760,407      instructions              #    0.00  insns per cycle          (62.50%)
+    39,784,657,191      ref-cycles                #   33.140 M/sec                    (74.99%)
+                 0      alignment-faults          #    0.000 K/sec                    (100.00%)
+            16,271      context-switches          #    0.014 K/sec                    (100.00%)
+    1200481.595966      cpu-clock (msec)          #  999.987 M/sec                    (100.00%)
+               556      cpu-migrations            #    0.000 K/sec                    (100.00%)
+                 0      emulation-faults          #    0.000 K/sec                    (100.00%)
+                 0      major-faults              #    0.000 K/sec                    (100.00%)
+            19,644      minor-faults              #    0.016 K/sec                    (100.00%)
+            19,644      page-faults               #    0.016 K/sec                    (100.00%)
+    1200496.758038      task-clock (msec)         #   48.091 CPUs utilized          
+
+      24.963230883 seconds time elapsed
+
+----------------------------------------------------------------------------------------------------
