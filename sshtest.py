@@ -15,7 +15,7 @@ mypath = home + '/signal.txt'
 def broadcast(filename):
     ips = ["10.140.81.48", "10.140.81.77"]
     for ip in ips:
-        os.system("ssh", ip, "touch", filename)
+        os.system("ssh "+ ip + " touch "+ filename)
 
 
 def start(workload, i):
@@ -106,7 +106,7 @@ for k in range(len(workload)):
 #        i = 1
    # for i in range(df.shape[0]):
         start(workload[k], i)
-        time.sleep(2)
+        time.sleep(10)
         os.system("rm conf/spark.conf")
         os.system("cp conf/spark.conf.template conf/spark.conf")
         os.system("rm /home/cc/spark-2.1.3-bin-hadoop2.7/mylog/*")
@@ -152,12 +152,12 @@ for k in range(len(workload)):
                          '/spark/run.sh'])
         time.sleep(2)
         end()
-        time.sleep(4)
+        time.sleep(8)
         collect_mem(workload[k], i)
         collect_io()
         collect_cputime()
         collect_perf_data()
-        time.sleep(5)
+        time.sleep(6)
         p = os.system("sudo sh -c \"sync; echo 3 > /proc/sys/vm/drop_caches\"")
 
 
