@@ -33,3 +33,4 @@ chmod 0600 ~/.ssh/authorized_keys
 ssh-keygen -R 192.5.87.230
 
 start-slave.sh spark://x.x.x.x:7077
+ssh-copy-id -i ~/.ssh/id_rsa.pub cc@xx.xx.xx.xx 
