@@ -12,10 +12,13 @@ from os.path import expanduser
 home = expanduser("~")
 mypath = home + '/signal.txt'
 
+def get_num(word):
+    return int(word[:-1].split("=")[1])
+
 def broadcast(filename):
-    ips = ["10.140.81.48", "10.140.81.77"]
+    ips = ["10.140.81.166", "10.140.81.201"]
     for ip in ips:
-        os.system("ssh "+ ip + " touch "+ filename)
+        os.system("ssh " + ip + " touch "+ filename)
 
 
 def start(workload, i):
@@ -26,43 +29,38 @@ def end():
     broadcast("end")
 
 
-def collect_io():
-    rbytes = 0
-    wbytes = 0
-    filelist = os.listdir("/home/cc/spark-2.1.3-bin-hadoop2.7/mylog")
-    for filename in filelist:
-        if 'app' in filename:
-            jfile = open(os.path.join('/home/cc/spark-2.1.3-bin-hadoop2.7/mylog', filename), 'r')
-            lines = jfile.readlines()
-            peak_memory = list()
-            for line in lines:
-                dict1 = json.loads(line)
-                if dict1["Event"] == "SparkListenerStageCompleted":
-                    for dict2 in dict1["Stage Info"]["Accumulables"]:
-                        if "internal.metrics.input.bytesRead" in dict2.values():
-                            rbytes += int(dict2["Value"])
-                        if "internal.metrics.output.bytesWritten" in dict2.values():
-                            wbytes += int(dict2["Value"])
-            jfile.close()
-    file = open("log.txt", "a")
-    file.write(" bytesRead" + ": " + str(rbytes) + " ")
-    file.write(" bytesWritten" + ": " + str(wbytes) + " ")
-    file.close()
-
-
 def collect_mem(workload, i):
-    max = 0
-    log = open("/home/cc/HiBench/report/" + workload +  "/spark/monitor.log", "r")
-    lines = log.readlines()
+    jfile = open("/home/cc/HiBench/report/" + workload +  "/spark/monitor.log", "r")
+    lines = jfile.readlines()
+    jfile.close()
+    nodes = ['10.140.81.201', '10.140.81.166', '10.140.83.35']
+    ibytes = [0, 0, 0]
+    obytes = [0, 0, 0]
+    mem = [0, 0, 0]
     for line in lines:
-        words = line.split()
-        for word in words:
-            if word[0:4] == "used":
-                temp = int(word[5:-1])
-                if temp > max:
-                    max = temp
+        idx = 0
+        for i in range(len(nodes)):
+            if nodes[i] in line:
+                idx = i
+        if 'net' in line:
+            words = line.split()
+            for word in words:
+                if 'recv_bytes' in word:
+                    ibytes[idx] += get_num(word)
+                if 'send_bytes' in word:
+                    obytes[idx] += get_num(word)
+        if 'mem' in line:
+            words = line.split()
+            for word in words:
+                if 'used' in word:
+                    mem[idx] = max(get_num(word), mem[idx])
     file = open("log.txt", "a")
-    file.write(workload + " " + str(i) + "\n memory(kb): " + str(max) + "\n")
+    file.write(workload + " " + str(i) + "\n")
+    for i in range(len(nodes)):
+        file = open("log.txt", "a")
+        file.write(
+            nodes[i] + " network_i(kb):" + str(ibytes[i]) + " network_o(kb):" + str(obytes[i]) + " memory(kb):" + str(
+                mem[i]) + "\n")
     file.close()
 
 
