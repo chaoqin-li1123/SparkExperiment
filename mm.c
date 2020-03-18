@@ -162,7 +162,7 @@ void insert_free(Node* node) {
     if (idx >= last_idx && idx < first_no_empty) first_no_empty = idx;
     insert_next(&head[idx], node);
 }
-// Get 2 MB memory and insert the node into the list, return pointer to node.
+// Get a chunk of memory using mem_sbrk, make a free block and insert the node into the list, return pointer to node.
 Node* get_chunk_by_size(int size) {
     alloc_cnt++;
     size += 48;
@@ -187,13 +187,14 @@ Node* prev_block(Node* node) {
     if (node->last_size == 0) return NULL;
     return (void*) node - HEADER_SIZE - node->last_size;
 }
-/* 
- * mm_init - initialize the malloc package.
- */
+// Set the node->last_size field of next block.
 void update_next_block(Node* this) {
     Node* next = next_block(this);
     if ((void*)next < mem_heap_hi()) next->last_size = node_size(this);
 }
+/* 
+ * mm_init - initialize the malloc package.
+ */
 int mm_init(void)
 {
     head = (Node*)mem_sbrk(sizeof(Node) * LISTN);
