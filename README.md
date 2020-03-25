@@ -17,5 +17,9 @@
 - "sudo apt-get install bc", otherwise the monitoring system won't generate any report.
 - Run a Hadoop bench and a Spark bench to make sure the benchmark suite work correctly.
 
+# Run Benchmark
+- Modify "conf/spark.conf" to reflect changes in spark configuration. For each row in configuration file, change the "conf/spark.conf" accordingly. All configuration can be found in [spark configuration](https://github.com/chaoqin-li1123/spark_experiment_chaoqin/blob/master/conf_chaoqin.csv) If you plan to generate new configuration for further analysis, check [Spark configuration generator](https://github.com/chaoqin-li1123/spark_experiment_chaoqin/blob/master/scripts/conf_generator.py).
+
+
 
 
