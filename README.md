@@ -17,6 +17,5 @@
 - "sudo apt-get install bc", otherwise the monitoring system won't generate any report.
 - Run a Hadoop bench and a Spark bench to make sure the benchmark suite work correctly.
 
-# Use python script to 
 
 
