@@ -22,10 +22,13 @@
 
 ## conf_generator.py
 - Generate N rows of random Spark parameters and convert into csv file.
+
 ## master_run.py
+### Data preparation
 - Prepare the data: subprocess.call(['./bin/workloads/micro/' + workload[k] + '/prepare/prepare.sh'])
 ### Repeat the following steps for N times.
 - Open spark.conf and overwrite its content.
+- Signal the slave node by creating an empty file in each slave node.
 - Use perf to spawn the hibench process.       
 subprocess.call(['perf', 'stat', '-B', '-e', 'branches,branch-misses,bus-cycles,cache-misses,'
                                                      'cache-references,cpu-cycles,instructions,ref-cycles,'
@@ -33,5 +36,9 @@ subprocess.call(['perf', 'stat', '-B', '-e', 'branches,branch-misses,bus-cycles,
                                                      'emulation-faults,major-faults,minor-faults,page-faults,'
                                                      'task-clock', '-o', 'perf.txt', './bin/workloads/micro/' + workload[k] +
                                                      '/spark/run.sh'])
+ - When the spark job finish, signal the slave nodes by creating an empty file in each slave node.
+ 
+ 
+                                                   
 
 
