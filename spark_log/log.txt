@@ -1,5 +1,0 @@
-lda 4: 5535696 bytesRead: 19545180  bytesWritten: 0  cputime: 405941075222
-lda 3: 6966004 bytesRead: 19545180  bytesWritten: 0  cputime: 473081873500
-lda 2: 7327872 bytesRead: 19545180  bytesWritten: 0  cputime: 461344966630
-lda 1: 6246504 bytesRead: 18037907  bytesWritten: 0  cputime: 437918023020
-lda 0: 6606196 bytesRead: 17988512  bytesWritten: 0  cputime: 370752118326
