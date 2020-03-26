@@ -20,6 +20,18 @@
 # Run Benchmark
 - Modify "conf/spark.conf" to reflect changes in spark configuration. For each row in configuration file, change the "conf/spark.conf" accordingly. All configuration parameters I used can be found in [spark configuration](https://github.com/chaoqin-li1123/spark_experiment_chaoqin/blob/master/conf_chaoqin.csv). If you plan to generate new configuration for further analysis, check [Spark configuration generator](https://github.com/chaoqin-li1123/spark_experiment_chaoqin/blob/master/scripts/conf_generator.py).
 
-
+## conf_generator.py
+- Generate N rows of random Spark parameters and convert into csv file.
+## master_run.py
+- Prepare the data: subprocess.call(['./bin/workloads/micro/' + workload[k] + '/prepare/prepare.sh'])
+### Repeat the following steps for N times.
+- Open spark.conf and overwrite its content.
+- Use perf to spawn the hibench process.       
+subprocess.call(['perf', 'stat', '-B', '-e', 'branches,branch-misses,bus-cycles,cache-misses,'
+                                                     'cache-references,cpu-cycles,instructions,ref-cycles,'
+                                                     'alignment-faults,context-switches,cpu-clock,cpu-migrations,'
+                                                     'emulation-faults,major-faults,minor-faults,page-faults,'
+                                                     'task-clock', '-o', 'perf.txt', './bin/workloads/micro/' + workload[k] +
+                                                     '/spark/run.sh'])
 
 
