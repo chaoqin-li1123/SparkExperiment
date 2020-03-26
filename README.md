@@ -37,6 +37,22 @@ subprocess.call(['perf', 'stat', '-B', '-e', 'branches,branch-misses,bus-cycles,
                                                      'task-clock', '-o', 'perf.txt', './bin/workloads/micro/' + workload[k] +
                                                      '/spark/run.sh'])
  - When the spark job finish, signal the slave nodes by creating an empty file in each slave node.
+ - Clean the cache and start another workload in a few seconds.
+ - There will be a txt file in master node and each slave node that record the data from perf and monitor.log of Hibench.
+ - Use screen to run execute all the command so that the process won't be terminated when you exit from ssh.
+ 
+ ## perf_monitor.py
+ - Start perf_monitor.py in slave nodes before you start master_run.py in master node.
+ - It check the root directory periodically to detect signal from master node. When a target file is found, spawn a process that call "nothing.py" which, as its name suggests, does nothing but run during the lifetime of the workload. We combine it with perf to keep track all the events system wide during the lifetime of the workload.
+
+## nothing.py
+- Does nothing. Get started when the perf_monitor.py detect a signal from master node, terminate when itself detects a signal to stop.
+
+## raw2csv.py
+- A parser that convert "master.txt", "slave1.txt" and "slave2.txt" into a csv file.
+- Put "master.txt", "slave1.txt" and "slave2.txt" into the same directory and run raw2csv.py.
+
+ 
  
  
                                                    
